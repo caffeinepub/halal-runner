@@ -1,0 +1,192 @@
+{
+  "kind": "build_request",
+  "title": "Halal Muslim Themed Endless Runner Game (Subway Surfers Style)",
+  "projectName": "Deen Runner",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement a 3D endless runner core gameplay loop using React Three Fiber: the player character automatically runs forward along a three-lane track, can swipe/press left or right to change lanes, jump (up arrow / swipe up) to clear obstacles, and slide (down arrow / swipe down) to go under obstacles. The game ends when the player collides with an obstacle.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a game like Subway surf with halal muslim theme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Player character runs forward automatically at increasing speed over time",
+        "Left/right lane switching works via keyboard arrow keys and touch swipe",
+        "Jump and slide animations play correctly on input",
+        "Collision with obstacle triggers a game-over state",
+        "Game speed gradually increases the longer the player survives"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Build procedurally generated 3D Islamic-themed environments that scroll toward the player: include mosque architecture (minarets, domes, arched doorways), geometric tile patterns on floors and walls, crescent moon and star decorations, and desert/market bazaar scenery. Environments should tile seamlessly for an infinite feel.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "halal muslim theme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Track environment visually evokes Islamic architecture and art",
+        "Environment tiles loop seamlessly without visible seams",
+        "Geometric Arabic patterns appear on floor/wall surfaces",
+        "Minaret and dome silhouettes appear in the background"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add coin and collectible mechanics: scatter golden coins (styled as Islamic gold dinars with crescent motifs) and special collectibles (e.g., prayer beads, lanterns, Quran scrolls) along the three lanes. Collecting items increments the run score. Display a coin counter and score on the HUD.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a game like Subway surf"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Coins and collectibles appear along all three lanes during a run",
+        "Touching/running through a coin increments the coin counter",
+        "Score increases continuously based on distance run and items collected",
+        "HUD displays current coin count and distance score in real time"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement Islamic-themed power-ups that the player can collect during a run: a 'Barakah Shield' that grants temporary invincibility, a 'Buraq Boost' for a speed burst with a flying visual effect, and a 'Magnet' that auto-collects nearby coins. Each power-up has a visible timer on the HUD while active.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a game like Subway surf with halal muslim theme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Three distinct power-up types spawn randomly during a run",
+        "Each power-up has a unique 3D icon with Islamic styling",
+        "Active power-up duration is shown in the HUD with a depleting bar",
+        "Shield makes player invincible to one obstacle collision",
+        "Buraq Boost temporarily increases speed and shows a visual trail"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Create a character selection screen with at least three selectable Muslim-themed runner characters (e.g., a boy in a kufi cap, a girl in a hijab, a scholar with a turban). Selected character persists across runs. Characters are rendered as simple 3D mesh figures with culturally appropriate clothing.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "halal muslim theme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Character selection screen shows at least three character options",
+        "Each character has a visually distinct appearance with Islamic attire",
+        "Selected character is highlighted and saved for the current session",
+        "The chosen character model appears correctly in the game run"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement a persistent high score leaderboard stored in the Motoko backend: save each completed run's score and coin count associated with a player nickname. Display the top 10 scores on a leaderboard screen accessible from the main menu. Provide a 'Submit Score' flow after game over.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a game like Subway surf"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend stores run records with nickname, score, and coin count",
+        "Leaderboard screen fetches and displays the top 10 all-time scores",
+        "After game over, player can enter a nickname and submit their score",
+        "Scores are ranked in descending order",
+        "Leaderboard updates immediately after a new score is submitted"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Design a cohesive visual theme: use a warm desert color palette (sand golds, terracotta, deep teal, ivory) with Arabic calligraphy-inspired typography for headings. Apply the Islamic geometric pattern motifs consistently across the main menu, HUD, character select, and leaderboard screens. All UI must feel immersive and culturally respectful.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "halal muslim theme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Color palette is consistently warm desert tones across all screens",
+        "Headings use a decorative Arabic-inspired or calligraphy-style font",
+        "Islamic geometric patterns appear as borders or backgrounds in UI panels",
+        "No culturally disrespectful or haram imagery appears anywhere in the game"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Create a main menu screen with the game logo, a Play button, a Character Select button, and a Leaderboard button. Include a game-over screen showing the run's final score, coins collected, best score, and buttons to Retry or Return to Menu.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a game like Subway surf"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Main menu displays game title/logo and all three navigation buttons",
+        "Game-over screen shows final score, coins, and personal best",
+        "Retry immediately starts a new run",
+        "Return to Menu navigates back to the main menu",
+        "Transitions between screens are smooth"
+      ]
+    }
+  ],
+  "constraints": [
+    "All game logic and rendering must run entirely on the frontend using React Three Fiber / Three.js",
+    "No external game engines (Unity, Unreal, Phaser) may be used",
+    "All imagery and content must be culturally respectful of Islamic values — no haram elements",
+    "Backend is limited to score persistence only; all gameplay logic stays on the frontend"
+  ],
+  "nonGoals": [
+    "Multiplayer or real-time online gameplay",
+    "In-app purchases or payment flows",
+    "Internet Identity / wallet authentication",
+    "Audio or music (no sound implementation required)",
+    "Mobile app packaging (web only)"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Game logo with crescent moon, star, and stylized Arabic-inspired lettering on a deep teal background (logo-deen-runner.dim_512x256.png)",
+      "Islamic geometric tile pattern in gold and terracotta on ivory background, seamless (pattern-islamic-tile.dim_512x512.png)",
+      "Desert cityscape silhouette with mosque domes and minarets against a warm sunset sky (bg-desert-city.dim_1920x600.png)",
+      "Gold dinar coin with crescent moon motif on both sides (coin-dinar.dim_128x128.png)",
+      "Glowing lantern collectible icon in warm amber tones (collectible-lantern.dim_128x128.png)",
+      "Prayer beads collectible icon in green and gold (collectible-beads.dim_128x128.png)",
+      "Barakah Shield power-up icon — golden hexagonal shield with star pattern (powerup-shield.dim_128x128.png)",
+      "Buraq Boost power-up icon — stylized winged horse silhouette in electric teal (powerup-buraq.dim_128x128.png)",
+      "Coin magnet power-up icon — crescent-shaped magnet with gold sparkles (powerup-magnet.dim_128x128.png)",
+      "Main menu background — aerial view of an Islamic marketplace with archways and tile rooftops (bg-main-menu.dim_1920x1080.png)"
+    ],
+    "edits": []
+  }
+}

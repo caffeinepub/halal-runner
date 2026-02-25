@@ -1,0 +1,76 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T00:33:46.244Z",
+  "summary": "The diff implements a comprehensive Halal Muslim themed endless runner game covering most requirements. The core gameplay (REQ-1), Islamic environment (REQ-2), collectibles/HUD (REQ-3), power-ups (REQ-4), character selection (REQ-5), leaderboard backend (REQ-6), visual theme (REQ-7), and menu/game-over screens (REQ-8) are all present. However, several specific acceptance criteria have gaps: the character selection screen uses 2D emoji previews rather than actual 3D mesh figures; the Buraq Boost visual trail effect is not clearly implemented in the truncated diff; and the backend uses a Map keyed by nickname which overwrites previous entries rather than storing each run record.",
+  "missing_requirements": [
+    {
+      "id": "REQ-5",
+      "requirement": "Characters are rendered as simple 3D mesh figures with culturally appropriate clothing in the character selection screen",
+      "reason": "The CharacterSelect screen uses 2D emoji representations (e.g., 🧢, 🧕, 👳) in the selection cards rather than actual 3D mesh figures. Only the in-game GameScene renders 3D character meshes.",
+      "evidence": [
+        "frontend/src/screens/CharacterSelect.tsx",
+        "frontend/src/game/characters/index.ts"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Buraq Boost shows a visual trail effect",
+      "reason": "The Buraq Boost increases speed (buraqSpeed = speed * 1.5) but no explicit visual trail effect implementation is visible in the truncated diff.",
+      "evidence": [
+        "frontend/src/App.tsx",
+        "frontend/src/game/GameScene.tsx"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "requirement": "Backend stores run records per run — multiple runs per player should be persisted",
+      "reason": "The backend uses a Map keyed by nickname, meaning submitting a score for the same nickname overwrites the previous entry rather than storing all run records per run.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity authentication provider integrated into the app",
+      "reason": "The build request explicitly excludes Internet Identity / wallet authentication as a non-goal, yet the codebase includes a full useInternetIdentity hook with AuthClient, login/logout flows, and the InternetIdentityProvider wrapping the entire app.",
+      "evidence": [
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/main.tsx",
+        "frontend/src/hooks/useActor.ts"
+      ]
+    },
+    {
+      "description": "Speed meter visual indicator displayed on the HUD",
+      "reason": "The GameHUD includes a visual speed meter with 5 bars at the bottom of the screen. A visible speed HUD indicator was not specified in any requirement — only the speed mechanic itself was required.",
+      "evidence": [
+        "frontend/src/game/GameHUD.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.78,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/game/GameHUD.tsx",
+    "frontend/src/game/GameScene.tsx",
+    "frontend/src/game/characters/index.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useGameState.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/screens/CharacterSelect.tsx",
+    "frontend/src/screens/GameOver.tsx",
+    "frontend/src/screens/Leaderboard.tsx",
+    "frontend/src/screens/MainMenu.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

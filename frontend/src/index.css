@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Desert warm palette */
+    --background: 0.18 0.03 60;
+    --foreground: 0.95 0.04 80;
+
+    --card: 0.22 0.04 55;
+    --card-foreground: 0.95 0.04 80;
+
+    --popover: 0.22 0.04 55;
+    --popover-foreground: 0.95 0.04 80;
+
+    /* Sand gold primary */
+    --primary: 0.78 0.14 75;
+    --primary-foreground: 0.15 0.04 55;
+
+    /* Deep teal secondary */
+    --secondary: 0.38 0.09 195;
+    --secondary-foreground: 0.95 0.04 80;
+
+    /* Terracotta accent */
+    --accent: 0.62 0.14 35;
+    --accent-foreground: 0.95 0.04 80;
+
+    --muted: 0.28 0.04 55;
+    --muted-foreground: 0.65 0.06 70;
+
+    --destructive: 0.58 0.22 25;
+    --destructive-foreground: 0.95 0.04 80;
+
+    --border: 0.38 0.06 65;
+    --input: 0.28 0.04 55;
+    --ring: 0.78 0.14 75;
+
+    --chart-1: 0.78 0.14 75;
+    --chart-2: 0.62 0.14 35;
+    --chart-3: 0.38 0.09 195;
+    --chart-4: 0.55 0.12 50;
+    --chart-5: 0.45 0.10 200;
+
+    --sidebar: 0.20 0.04 55;
+    --sidebar-foreground: 0.95 0.04 80;
+    --sidebar-primary: 0.78 0.14 75;
+    --sidebar-primary-foreground: 0.15 0.04 55;
+    --sidebar-accent: 0.28 0.04 55;
+    --sidebar-accent-foreground: 0.95 0.04 80;
+    --sidebar-border: 0.38 0.06 65;
+    --sidebar-ring: 0.78 0.14 75;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Lato', sans-serif;
+    overflow: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Cinzel Decorative', serif;
+  }
+
+  h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Cinzel Decorative', serif;
+  }
+
+  .font-subheading {
+    font-family: 'Cinzel', serif;
+  }
+
+  .font-body {
+    font-family: 'Lato', sans-serif;
+  }
+
+  .islamic-border {
+    border-image: url('/assets/generated/pattern-islamic-tile.dim_512x512.png') 30 round;
+    border-width: 4px;
+    border-style: solid;
+  }
+
+  .text-shadow-gold {
+    text-shadow: 0 0 20px oklch(0.78 0.14 75 / 0.8), 0 2px 4px rgba(0,0,0,0.8);
+  }
+
+  .text-shadow-dark {
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+  }
+
+  .btn-islamic {
+    background: linear-gradient(135deg, oklch(0.78 0.14 75), oklch(0.65 0.12 60));
+    border: 2px solid oklch(0.85 0.16 80);
+    color: oklch(0.15 0.04 55);
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px oklch(0.78 0.14 75 / 0.4), inset 0 1px 0 oklch(0.92 0.18 85 / 0.5);
+  }
+
+  .btn-islamic:hover {
+    background: linear-gradient(135deg, oklch(0.85 0.16 80), oklch(0.72 0.14 65));
+    box-shadow: 0 6px 20px oklch(0.78 0.14 75 / 0.6), inset 0 1px 0 oklch(0.92 0.18 85 / 0.5);
+    transform: translateY(-1px);
+  }
+
+  .btn-teal {
+    background: linear-gradient(135deg, oklch(0.42 0.10 195), oklch(0.32 0.08 200));
+    border: 2px solid oklch(0.52 0.12 195);
+    color: oklch(0.95 0.04 80);
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px oklch(0.38 0.09 195 / 0.4);
+  }
+
+  .btn-teal:hover {
+    background: linear-gradient(135deg, oklch(0.48 0.12 195), oklch(0.38 0.10 200));
+    box-shadow: 0 6px 20px oklch(0.38 0.09 195 / 0.6);
+    transform: translateY(-1px);
+  }
+
+  .panel-islamic {
+    background: linear-gradient(135deg, oklch(0.22 0.04 55 / 0.95), oklch(0.18 0.03 60 / 0.95));
+    border: 2px solid oklch(0.78 0.14 75 / 0.5);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 oklch(0.78 0.14 75 / 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .gold-text {
+    color: oklch(0.82 0.16 78);
+  }
+
+  .teal-text {
+    color: oklch(0.62 0.12 195);
+  }
+
+  .pattern-bg {
+    background-image: url('/assets/generated/pattern-islamic-tile.dim_512x512.png');
+    background-size: 128px 128px;
+    background-repeat: repeat;
+    opacity: 0.08;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(0.18 0.03 60);
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.78 0.14 75 / 0.5);
+  border-radius: 3px;
+}
+
+/* Game canvas */
+#game-canvas-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 10px oklch(0.78 0.14 75 / 0.4); }
+  50% { box-shadow: 0 0 25px oklch(0.78 0.14 75 / 0.8), 0 0 50px oklch(0.78 0.14 75 / 0.3); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, oklch(0.78 0.14 75), oklch(0.92 0.18 85), oklch(0.78 0.14 75));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}

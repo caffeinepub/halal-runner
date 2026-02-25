@@ -1,0 +1,23 @@
+{
+  "backend/main.mo": "Motoko actor that stores and retrieves player scores using a map, exposing submitScore to upsert entries and getLeaderboard to return top N scores sorted descending.",
+  "feature_evidence.json": "Feature evidence report mapping implemented game features (endless runner loop, collectibles, power-ups, character select, etc.) to their source files, components, and test IDs with confidence ratings.",
+  "frontend-file-summaries.txt": "JSON document containing one-sentence summaries of every frontend source file, serving as a quick reference for the project's frontend structure.",
+  "frontend/index.css": "Tailwind base stylesheet defining OKLCH CSS custom properties for light and dark theme tokens (background, foreground, primary, chart colors, sidebar, etc.).",
+  "frontend/index.html": "HTML entry point titled 'Deen Runner - Halal Muslim Adventure' that preloads Cinzel Decorative, Cinzel, and Lato Google Fonts and mounts the React app via main.tsx.",
+  "frontend/src/App.tsx": "Root React component that routes between menu, character-select, leaderboard, playing, and game-over screens, wiring game callbacks (coin collection, score updates, power-ups, game over) to GameScene and GameHUD.",
+  "frontend/src/game/characters/index.ts": "Defines the CharacterDef interface and exports three Islamic-themed runner characters (Ahmad with kufi, Fatima with hijab, Sheikh Omar with turban) with color and headwear metadata.",
+  "frontend/src/game/GameHUD.tsx": "Overlay HUD component displaying the current score, coin count, active power-up name with a depleting timer bar, shield indicator, and a speed meter using the game state props.",
+  "frontend/src/game/GameScene.tsx": "Main React Three Fiber 3D scene implementing the full endless runner: three-lane player movement, jump/slide physics, procedural obstacle and collectible spawning, collision detection, and an Islamic-themed environment.",
+  "frontend/src/hooks/useActor.ts": "Custom hook that creates and caches an ICP backend actor using React Query, returning either an authenticated or anonymous actor based on the current Internet Identity, and invalidating dependent queries when the actor changes.",
+  "frontend/src/hooks/useGameState.ts": "Custom hook managing all game state (screen, score, coins, speed, power-ups, personal best) with callbacks for starting/ending the game, activating power-ups, and tracking the player's selected character.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides an Internet Identity authentication context and provider using DFINITY's AuthClient, exposing login/logout functions, identity state, and login status to child components.",
+  "frontend/src/hooks/useQueries.ts": "Defines React Query hooks for fetching the leaderboard and submitting scores to the ICP backend actor, invalidating the leaderboard cache on successful submission.",
+  "frontend/src/index.css": "Global stylesheet that imports Google Fonts, sets up Tailwind CSS, defines a desert/Islamic-themed CSS variable palette, and provides utility classes for buttons, panels, text shadows, and background patterns.",
+  "frontend/src/main.tsx": "Application entry point that mounts the React app with QueryClientProvider and InternetIdentityProvider wrappers around the root App component.",
+  "frontend/src/screens/CharacterSelect.tsx": "Character selection screen that displays a grid of selectable runner characters with preview, color swatches, and name/description, allowing the player to pick a character before starting the game.",
+  "frontend/src/screens/GameOver.tsx": "Game over screen displaying the player's score, coins, and personal best, with an optional nickname input to submit the score to the leaderboard and buttons to retry or return to the menu.",
+  "frontend/src/screens/Leaderboard.tsx": "React screen component that fetches and displays the game leaderboard with ranked entries showing nickname, score, and coins, including loading/error states and a refresh button.",
+  "frontend/src/screens/MainMenu.tsx": "React screen component rendering the main menu with navigation buttons for Play, Character Select, and Leaderboard, plus a how-to-play controls hint panel.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration defining custom Islamic-themed colors (sand-gold, terracotta, deep-teal), fonts (Cinzel, Lato), shadows, border radii, and animation keyframes for the game UI.",
+  "project_state.json": "Project state manifest describing the Deen Runner endless runner game's architecture, required image assets, and implemented features such as core gameplay, collectibles, power-ups, and leaderboard."
+}

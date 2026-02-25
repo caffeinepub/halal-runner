@@ -1,0 +1,15 @@
+{
+  "frontend/src/index.css": "Global styles with Islamic desert color palette (sand gold, terracotta, deep teal, ivory) using OKLCH tokens, Arabic-inspired Cinzel Decorative font, utility classes for Islamic panels, gold text, shimmer effects, and game animations.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with Islamic theme colors (sand-gold, terracotta, deep-teal, ivory), custom font families (Cinzel Decorative for headings, Cinzel for subheadings, Lato for body), and custom shadows/animations.",
+  "frontend/src/hooks/useGameState.ts": "Custom hook managing all game state including screen navigation, score, coins, speed progression, power-up activation/timers, shield logic, and personal best persistence in localStorage.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for backend leaderboard operations — fetching top 10 scores and submitting new score entries via the Motoko backend actor.",
+  "frontend/src/game/characters/index.ts": "Character definitions for three Islamic-themed runner characters (Ahmad with kufi, Fatima with hijab, Sheikh Omar with turban) including colors, headwear types, and descriptions.",
+  "frontend/src/game/GameScene.tsx": "Main 3D game scene using React Three Fiber Canvas with full endless runner mechanics: three-lane movement, jump/slide physics, procedural obstacle/collectible spawning, collision detection, Islamic environment (minarets, domes, arched track), and player mesh rendering.",
+  "frontend/src/game/GameHUD.tsx": "In-game heads-up display overlay showing score, coin count, active power-up with depleting timer bar, shield indicator, speed meter, and control hints.",
+  "frontend/src/screens/MainMenu.tsx": "Main menu screen with game logo, animated Islamic-themed background, Play/Character Select/Leaderboard navigation buttons, and controls guide panel.",
+  "frontend/src/screens/CharacterSelect.tsx": "Character selection screen displaying three Islamic-themed runner characters with visual previews, selection highlighting, color swatches, and a start game button.",
+  "frontend/src/screens/GameOver.tsx": "Game over screen showing final score, coins, personal best, nickname input for score submission to backend, and retry/menu navigation buttons.",
+  "frontend/src/screens/Leaderboard.tsx": "Leaderboard screen fetching and displaying top 10 scores from the backend with rank medals, score/coin columns, and refresh functionality.",
+  "frontend/src/App.tsx": "Root application component managing screen routing between menu/character-select/leaderboard/playing/game-over states, wiring all game callbacks (coin collection, score updates, power-ups, game over) to the GameScene and HUD.",
+  "frontend/index.html": "HTML entry point with Cinzel Decorative and Lato Google Fonts preloaded, updated title to \"Deen Runner - Halal Muslim Adventure\"."
+}

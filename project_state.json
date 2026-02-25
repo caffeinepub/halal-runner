@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "An endless runner game inspired by Subway Surfers with a halal Muslim theme. The player character runs through Islamic-themed environments, collecting coins/items, dodging obstacles, with Islamic art, architecture, and cultural elements throughout.",
+  "architectural_notes": [
+    "2D side-scrolling endless runner (Subway Surfers style with lane-switching mechanic)",
+    "Procedurally generated obstacles and environment tiles for infinite replayability"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Game logo with crescent moon, star, and stylized Arabic-inspired lettering on a deep teal background (logo-deen-runner.dim_512x256.png)\n- Islamic geometric tile pattern in gold and terracotta on ivory background, seamless (pattern-islamic-tile.dim_512x512.png)\n- Desert cityscape silhouette with mosque domes and minarets against a warm sunset sky (bg-desert-city.dim_1920x600.png)\n- Gold dinar coin with crescent moon motif on both sides (coin-dinar.dim_128x128.png)\n- Glowing lantern collectible icon in warm amber tones (collectible-lantern.dim_128x128.png)\n- Prayer beads collectible icon in green and gold (collectible-beads.dim_128x128.png)\n- Barakah Shield power-up icon — golden hexagonal shield with star pattern (powerup-shield.dim_128x128.png)\n- Buraq Boost power-up icon — stylized winged horse silhouette in electric teal (powerup-buraq.dim_128x128.png)\n- Coin magnet power-up icon — crescent-shaped magnet with gold sparkles (powerup-magnet.dim_128x128.png)\n- Main menu background — aerial view of an Islamic marketplace with archways and tile rooftops (bg-main-menu.dim_1920x1080.png)",
+  "existing_features": [
+    {
+      "id": "feature-implement-a-3d-endless-runner-core-gameplay-loop-using-react-three-fiber-the-player-character-automatically-runs-forward-along-a-three-lane-track-can-swipe-press-left-or-right-to-change-lanes-jump-up-arrow-swipe-up-to-clear-obstacles-and-slide-down-arrow-swipe-down-to-go-under-obstacles-the-game-ends-when-the-player-collides-with-an-obstacle",
+      "title": "Implement a 3D endless runner core gameplay loop using React Three Fiber: the player character automatically runs forward along a three-lane track, can swipe/press left or right to change lanes, jump (up arrow / swipe up) to clear obstacles, and slide (down arrow / swipe down) to go under obstacles. The game ends when the player collides with an obstacle.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-coin-and-collectible-mechanics-scatter-golden-coins-styled-as-islamic-gold-dinars-with-crescent-motifs-and-special-collectibles-e-g-prayer-beads-lanterns-quran-scrolls-along-the-three-lanes-collecting-items-increments-the-run-score-display-a-coin-counter-and-score-on-the-hud",
+      "title": "Add coin and collectible mechanics: scatter golden coins (styled as Islamic gold dinars with crescent motifs) and special collectibles (e.g., prayer beads, lanterns, Quran scrolls) along the three lanes. Collecting items increments the run score. Display a coin counter and score on the HUD.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-islamic-themed-power-ups-that-the-player-can-collect-during-a-run-a-barakah-shield-that-grants-temporary-invincibility-a-buraq-boost-for-a-speed-burst-with-a-flying-visual-effect-and-a-magnet-that-auto-collects-nearby-coins-each-power-up-has-a-visible-timer-on-the-hud-while-active",
+      "title": "Implement Islamic-themed power-ups that the player can collect during a run: a 'Barakah Shield' that grants temporary invincibility, a 'Buraq Boost' for a speed burst with a flying visual effect, and a 'Magnet' that auto-collects nearby coins. Each power-up has a visible timer on the HUD while active.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-character-selection-screen-with-at-least-three-selectable-muslim-themed-runner-characters-e-g-a-boy-in-a-kufi-cap-a-girl-in-a-hijab-a-scholar-with-a-turban-selected-character-persists-across-runs-characters-are-rendered-as-simple-3d-mesh-figures-with-culturally-appropriate-clothing",
+      "title": "Create a character selection screen with at least three selectable Muslim-themed runner characters (e.g., a boy in a kufi cap, a girl in a hijab, a scholar with a turban). Selected character persists across runs. Characters are rendered as simple 3D mesh figures with culturally appropriate clothing.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-persistent-high-score-leaderboard-stored-in-the-motoko-backend-save-each-completed-run-s-score-and-coin-count-associated-with-a-player-nickname-display-the-top-10-scores-on-a-leaderboard-screen-accessible-from-the-main-menu-provide-a-submit-score-flow-after-game-over",
+      "title": "Implement a persistent high score leaderboard stored in the Motoko backend: save each completed run's score and coin count associated with a player nickname. Display the top 10 scores on a leaderboard screen accessible from the main menu. Provide a 'Submit Score' flow after game over.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-a-cohesive-visual-theme-use-a-warm-desert-color-palette-sand-golds-terracotta-deep-teal-ivory-with-arabic-calligraphy-inspired-typography-for-headings-apply-the-islamic-geometric-pattern-motifs-consistently-across-the-main-menu-hud-character-select-and-leaderboard-screens-all-ui-must-feel-immersive-and-culturally-respectful",
+      "title": "Design a cohesive visual theme: use a warm desert color palette (sand golds, terracotta, deep teal, ivory) with Arabic calligraphy-inspired typography for headings. Apply the Islamic geometric pattern motifs consistently across the main menu, HUD, character select, and leaderboard screens. All UI must feel immersive and culturally respectful.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-main-menu-screen-with-the-game-logo-a-play-button-a-character-select-button-and-a-leaderboard-button-include-a-game-over-screen-showing-the-run-s-final-score-coins-collected-best-score-and-buttons-to-retry-or-return-to-menu",
+      "title": "Create a main menu screen with the game logo, a Play button, a Character Select button, and a Leaderboard button. Include a game-over screen showing the run's final score, coins collected, best score, and buttons to Retry or Return to Menu.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Endless runner core gameplay (run, jump, slide, dodge obstacles)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Halal Muslim theme with Islamic art, architecture, and cultural visuals",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Coin/item collection mechanic during runs",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Power-ups and boosters with Islamic-themed design",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Character selection with Muslim-themed characters",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Score tracking and high score leaderboard",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Build procedurally generated 3D Islamic-themed environments that scroll toward the player: include mosque architecture (minarets, domes, arched doorways), geometric tile patterns on floors and walls, crescent moon and star decorations, and desert/market bazaar scenery. Environments should tile seamlessly for an infinite feel.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "2d",
+  "projectName": "Halal Runner",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

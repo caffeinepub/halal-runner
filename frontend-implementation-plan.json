@@ -1,0 +1,292 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Halal Muslim Themed Endless Runner Game (Deen Runner)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement 3D endless runner core gameplay loop with React Three Fiber",
+      "acceptanceCriteria": [
+        "Player character runs forward automatically at increasing speed over time",
+        "Left/right lane switching works via keyboard arrow keys and touch swipe",
+        "Jump and slide animations play correctly on input",
+        "Collision with obstacle triggers a game-over state",
+        "Game speed gradually increases the longer the player survives"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/game/GameScene.tsx",
+          "operation": "create",
+          "description": "Create the main 3D game scene component using React Three Fiber Canvas. Set up camera, lighting, and coordinate the player, track, obstacles, and collectibles. Handle game state (running, game-over) and speed progression. This is a 3D game."
+        },
+        {
+          "path": "frontend/src/game/Player.tsx",
+          "operation": "create",
+          "description": "Create the player character component as a 3D mesh. Implement automatic forward movement, three-lane positioning, lane-switching animation, jump physics, and slide animation. Handle keyboard (arrow keys) and touch swipe input detection. Expose collision detection interface."
+        },
+        {
+          "path": "frontend/src/game/Track.tsx",
+          "operation": "create",
+          "description": "Create the infinite scrolling track component. Generate and recycle track segments as the player moves forward. Position obstacles and collectibles procedurally across three lanes."
+        },
+        {
+          "path": "frontend/src/game/Obstacle.tsx",
+          "operation": "create",
+          "description": "Create obstacle component as 3D meshes (barriers, boxes, low overhangs). Implement collision detection with the player. Support both jump-over and slide-under obstacle types."
+        },
+        {
+          "path": "frontend/src/hooks/useGameState.ts",
+          "operation": "create",
+          "description": "Create a custom hook to manage game state: running status, current score, coin count, speed multiplier, game-over flag, and reset logic. Export state and actions for game components to consume."
+        },
+        {
+          "path": "frontend/src/hooks/useInputControls.ts",
+          "operation": "create",
+          "description": "Create a custom hook to handle keyboard arrow key events and touch swipe gestures. Return directional commands (left, right, up, down) for the player component to consume."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Build procedurally generated 3D Islamic-themed environments",
+      "acceptanceCriteria": [
+        "Track environment visually evokes Islamic architecture and art",
+        "Environment tiles loop seamlessly without visible seams",
+        "Geometric Arabic patterns appear on floor/wall surfaces",
+        "Minaret and dome silhouettes appear in the background"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/game/Environment.tsx",
+          "operation": "create",
+          "description": "Create the 3D environment component rendering Islamic-themed scenery: mosque domes, minarets, arched doorways, and geometric tile patterns. Use textures referencing generated images from frontend/public/assets/generated/pattern-islamic-tile.dim_512x512.png and frontend/public/assets/generated/bg-desert-city.dim_1920x600.png. Implement seamless tiling and procedural placement of architectural elements."
+        },
+        {
+          "path": "frontend/src/game/Track.tsx",
+          "operation": "modify",
+          "description": "Integrate Environment component into track segments. Apply Islamic geometric patterns as textures to track floor and walls. Ensure environment elements scroll and recycle seamlessly."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add coin and collectible mechanics with HUD display",
+      "acceptanceCriteria": [
+        "Coins and collectibles appear along all three lanes during a run",
+        "Touching/running through a coin increments the coin counter",
+        "Score increases continuously based on distance run and items collected",
+        "HUD displays current coin count and distance score in real time"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/game/Collectible.tsx",
+          "operation": "create",
+          "description": "Create collectible component for coins (using generated image frontend/public/assets/generated/coin-dinar.dim_128x128.png as texture), lanterns (frontend/public/assets/generated/collectible-lantern.dim_128x128.png), and prayer beads (frontend/public/assets/generated/collectible-beads.dim_128x128.png). Render as 3D meshes with textures. Implement collision detection and trigger collection events."
+        },
+        {
+          "path": "frontend/src/game/Track.tsx",
+          "operation": "modify",
+          "description": "Spawn collectibles along the three lanes at regular intervals. Pass collectible types and positions to Collectible component instances."
+        },
+        {
+          "path": "frontend/src/game/GameHUD.tsx",
+          "operation": "create",
+          "description": "Create the in-game heads-up display component. Show current coin count, distance score, and active power-up timers. Position HUD elements at the top of the screen using absolute positioning over the Canvas."
+        },
+        {
+          "path": "frontend/src/hooks/useGameState.ts",
+          "operation": "modify",
+          "description": "Add coin collection and score increment logic. Update score based on distance traveled and items collected."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement Islamic-themed power-ups with visual timers",
+      "acceptanceCriteria": [
+        "Three distinct power-up types spawn randomly during a run",
+        "Each power-up has a unique 3D icon with Islamic styling",
+        "Active power-up duration is shown in the HUD with a depleting bar",
+        "Shield makes player invincible to one obstacle collision",
+        "Buraq Boost temporarily increases speed and shows a visual trail"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/game/PowerUp.tsx",
+          "operation": "create",
+          "description": "Create power-up component rendering Barakah Shield (frontend/public/assets/generated/powerup-shield.dim_128x128.png), Buraq Boost (frontend/public/assets/generated/powerup-buraq.dim_128x128.png), and Coin Magnet (frontend/public/assets/generated/powerup-magnet.dim_128x128.png) as 3D meshes with textures. Handle collision detection and trigger power-up activation."
+        },
+        {
+          "path": "frontend/src/game/Track.tsx",
+          "operation": "modify",
+          "description": "Spawn power-ups randomly along the track at intervals. Pass power-up types to PowerUp component instances."
+        },
+        {
+          "path": "frontend/src/hooks/useGameState.ts",
+          "operation": "modify",
+          "description": "Add power-up state management: track active power-up type, remaining duration, and effects. Implement Shield invincibility, Buraq speed boost, and Magnet auto-collection logic."
+        },
+        {
+          "path": "frontend/src/game/GameHUD.tsx",
+          "operation": "modify",
+          "description": "Add power-up timer display showing active power-up icon and a depleting progress bar indicating remaining duration."
+        },
+        {
+          "path": "frontend/src/game/Player.tsx",
+          "operation": "modify",
+          "description": "Apply Buraq Boost speed increase and visual trail effect when active. Handle Shield invincibility preventing game-over on collision."
+        },
+        {
+          "path": "frontend/src/game/Collectible.tsx",
+          "operation": "modify",
+          "description": "Implement Magnet power-up behavior: auto-collect coins within a radius when magnet is active."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create character selection screen with Muslim-themed runner characters",
+      "acceptanceCriteria": [
+        "Character selection screen shows at least three character options",
+        "Each character has a visually distinct appearance with Islamic attire",
+        "Selected character is highlighted and saved for the current session",
+        "The chosen character model appears correctly in the game run"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/screens/CharacterSelect.tsx",
+          "operation": "create",
+          "description": "Create character selection screen displaying at least three character options (boy in kufi cap, girl in hijab, scholar with turban). Render character previews as 3D meshes. Highlight the selected character. Save selection to state. Include a Start Game button."
+        },
+        {
+          "path": "frontend/src/game/characters/index.tsx",
+          "operation": "create",
+          "description": "Define character models as simple 3D mesh geometries with culturally appropriate clothing and colors. Export character definitions (mesh geometry, materials, names) for use in character select and gameplay."
+        },
+        {
+          "path": "frontend/src/hooks/useCharacterSelection.ts",
+          "operation": "create",
+          "description": "Create a custom hook to manage selected character state. Persist selection in session storage. Provide getter and setter for selected character ID."
+        },
+        {
+          "path": "frontend/src/game/Player.tsx",
+          "operation": "modify",
+          "description": "Load the selected character model from useCharacterSelection hook. Render the appropriate character mesh in place of a default placeholder."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Implement persistent high score leaderboard with backend storage",
+      "acceptanceCriteria": [
+        "Backend stores run records with nickname, score, and coin count",
+        "Leaderboard screen fetches and displays the top 10 all-time scores",
+        "After game over, player can enter a nickname and submit their score",
+        "Scores are ranked in descending order",
+        "Leaderboard updates immediately after a new score is submitted"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/screens/Leaderboard.tsx",
+          "operation": "create",
+          "description": "Create leaderboard screen that fetches top 10 scores from backend using getLeaderboard method. Display scores in descending order with nickname, score, and coin count. Include a Back to Menu button."
+        },
+        {
+          "path": "frontend/src/screens/GameOver.tsx",
+          "operation": "create",
+          "description": "Create game-over screen showing final score, coins collected, and personal best. Include a nickname input form and Submit Score button that calls backend submitScore method. Provide Retry and Return to Menu buttons."
+        },
+        {
+          "path": "frontend/src/hooks/useLeaderboard.ts",
+          "operation": "create",
+          "description": "Create a custom hook to interact with backend leaderboard methods. Provide functions to fetch top scores (getLeaderboard) and submit new scores (submitScore). Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/hooks/useGameState.ts",
+          "operation": "modify",
+          "description": "Track personal best score in local storage. Compare final score to personal best on game-over and update if higher."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Design cohesive Islamic-themed visual style across all UI",
+      "acceptanceCriteria": [
+        "Color palette is consistently warm desert tones across all screens",
+        "Headings use a decorative Arabic-inspired or calligraphy-style font",
+        "Islamic geometric patterns appear as borders or backgrounds in UI panels",
+        "No culturally disrespectful or haram imagery appears anywhere in the game"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define global CSS custom properties for the warm desert color palette (sand golds, terracotta, deep teal, ivory). Import and configure an Arabic-inspired or calligraphy-style Google Font for headings. Apply base typography styles."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with custom desert color palette (sand-gold, terracotta, deep-teal, ivory). Configure font families to include the Arabic-inspired font for headings."
+        },
+        {
+          "path": "frontend/src/components/IslamicPanel.tsx",
+          "operation": "create",
+          "description": "Create a reusable Islamic-themed panel component with geometric pattern borders using the generated image frontend/public/assets/generated/pattern-islamic-tile.dim_512x512.png as a background or border texture. Apply desert color palette and Arabic-style typography."
+        },
+        {
+          "path": "frontend/src/screens/MainMenu.tsx",
+          "operation": "modify",
+          "description": "Apply IslamicPanel component and desert color palette. Use the generated background image frontend/public/assets/generated/bg-main-menu.dim_1920x1080.png. Style headings with Arabic-inspired font."
+        },
+        {
+          "path": "frontend/src/screens/CharacterSelect.tsx",
+          "operation": "modify",
+          "description": "Apply IslamicPanel component, desert color palette, and Arabic-inspired typography. Ensure geometric pattern borders appear on UI elements."
+        },
+        {
+          "path": "frontend/src/screens/Leaderboard.tsx",
+          "operation": "modify",
+          "description": "Apply IslamicPanel component, desert color palette, and Arabic-inspired typography for consistency."
+        },
+        {
+          "path": "frontend/src/screens/GameOver.tsx",
+          "operation": "modify",
+          "description": "Apply IslamicPanel component, desert color palette, and Arabic-inspired typography."
+        },
+        {
+          "path": "frontend/src/game/GameHUD.tsx",
+          "operation": "modify",
+          "description": "Style HUD elements with desert color palette and Arabic-inspired font for score and coin display."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Create main menu and game-over screens with navigation",
+      "acceptanceCriteria": [
+        "Main menu displays game title/logo and all three navigation buttons",
+        "Game-over screen shows final score, coins, and personal best",
+        "Retry immediately starts a new run",
+        "Return to Menu navigates back to the main menu",
+        "Transitions between screens are smooth"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/screens/MainMenu.tsx",
+          "operation": "create",
+          "description": "Create main menu screen displaying the game logo using the generated image frontend/public/assets/generated/logo-deen-runner.dim_512x256.png. Include Play, Character Select, and Leaderboard buttons. Apply the generated background image frontend/public/assets/generated/bg-main-menu.dim_1920x1080.png."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Set up routing or view state management to switch between MainMenu, CharacterSelect, Leaderboard, GameScene, and GameOver screens. Handle navigation actions from buttons. Ensure smooth transitions between screens."
+        },
+        {
+          "path": "frontend/src/screens/GameOver.tsx",
+          "operation": "modify",
+          "description": "Ensure Retry button resets game state and navigates to GameScene. Return to Menu button navigates back to MainMenu."
+        }
+      ]
+    }
+  ]
+}
