@@ -1,257 +1,93 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-25T00:33:46.247Z",
+  "generatedAt": "2026-02-25T00:44:09.604Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 8,
-    "implemented": 7,
+    "total": 6,
+    "implemented": 0,
     "items": [
       {
-        "id": "REQ-1",
-        "summary": "Implement a 3D endless runner core gameplay loop using React Three Fiber: the player character automatically runs forward along a three-lane track, can swipe/press left or right to change lanes, jump (up arrow / swipe up) to clear obstacles, and slide (down arrow / swipe down) to go under obstacles. The game ends when the player collides with an obstacle.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/game/GameScene.tsx",
-          "frontend/src/game/Player.tsx",
-          "frontend/src/game/Track.tsx",
-          "frontend/src/game/Obstacle.tsx",
-          "frontend/src/hooks/useGameState.ts",
-          "frontend/src/hooks/useInputControls.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/game/GameScene.tsx",
-          "frontend/src/hooks/useGameState.ts"
-        ]
-      },
-      {
-        "id": "REQ-2",
-        "summary": "Build procedurally generated 3D Islamic-themed environments that scroll toward the player: include mosque architecture (minarets, domes, arched doorways), geometric tile patterns on floors and walls, crescent moon and star decorations, and desert/market bazaar scenery. Environments should tile seamlessly for an infinite feel.",
+        "id": "REQ-10",
+        "summary": "Upgrade player character 3D models in GameScene.tsx and the character definitions: give each character (Ahmad with kufi, Fatima with hijab, Sheikh Omar with turban) more detailed mesh geometry — distinguishable facial features (stylised rounded head), properly shaped culturally appropriate headwear (kufi, hijab draped over shoulders, full turban wrap), coloured clothing (thobe/abaya/robe) with visible fabric folds using emissive or matcap materials, and idle/run animation via position-based bobbing. Characters should feel expressive and culturally respectful.",
         "status": "missing",
         "plannedFiles": [
-          "frontend/src/game/Environment.tsx",
-          "frontend/src/game/Track.tsx"
+          "frontend/src/game/GameScene.tsx",
+          "frontend/src/game/characters/index.ts",
+          "frontend/src/screens/CharacterSelect.tsx"
         ],
         "matchedFiles": []
       },
       {
-        "id": "REQ-3",
-        "summary": "Add coin and collectible mechanics: scatter golden coins (styled as Islamic gold dinars with crescent motifs) and special collectibles (e.g., prayer beads, lanterns, Quran scrolls) along the three lanes. Collecting items increments the run score. Display a coin counter and score on the HUD.",
-        "status": "implemented",
+        "id": "REQ-11",
+        "summary": "Enhance obstacle and collectible 3D visuals in GameScene.tsx: obstacles should look like culturally themed objects (stone archway barriers, crates with Arabic script textures, ornate pots) with richer materials. Coins should glow gold with a subtle spinning shimmer effect. Special collectibles (prayer beads, lanterns, Quran scrolls) should have distinct glowing auras matching their type. Add a particle burst effect (golden sparkles) when the player collects a coin or collectible.",
+        "status": "missing",
         "plannedFiles": [
-          "frontend/src/game/Collectible.tsx",
-          "frontend/src/game/Track.tsx",
-          "frontend/src/game/GameHUD.tsx",
-          "frontend/src/hooks/useGameState.ts"
+          "frontend/src/game/GameScene.tsx",
+          "frontend/src/game/GameScene.tsx"
         ],
-        "matchedFiles": [
-          "frontend/src/game/GameHUD.tsx",
-          "frontend/src/hooks/useGameState.ts"
-        ]
+        "matchedFiles": []
       },
       {
-        "id": "REQ-4",
-        "summary": "Implement Islamic-themed power-ups that the player can collect during a run: a 'Barakah Shield' that grants temporary invincibility, a 'Buraq Boost' for a speed burst with a flying visual effect, and a 'Magnet' that auto-collects nearby coins. Each power-up has a visible timer on the HUD while active.",
-        "status": "implemented",
+        "id": "REQ-12",
+        "summary": "Improve scene lighting in GameScene.tsx: add a warm directional sunlight (amber/orange tint) casting soft shadows on environment elements, a secondary ambient fill light in deep teal to simulate skylight, and point lights near lanterns and collectibles for localised warm glow. Enable shadow casting and receiving on the ground plane and key architectural props.",
+        "status": "missing",
         "plannedFiles": [
-          "frontend/src/game/PowerUp.tsx",
-          "frontend/src/game/Track.tsx",
-          "frontend/src/hooks/useGameState.ts",
-          "frontend/src/game/GameHUD.tsx",
-          "frontend/src/game/Player.tsx",
-          "frontend/src/game/Collectible.tsx"
+          "frontend/src/game/GameScene.tsx"
         ],
-        "matchedFiles": [
-          "frontend/src/hooks/useGameState.ts",
-          "frontend/src/game/GameHUD.tsx"
-        ]
+        "matchedFiles": []
       },
       {
-        "id": "REQ-5",
-        "summary": "Create a character selection screen with at least three selectable Muslim-themed runner characters (e.g., a boy in a kufi cap, a girl in a hijab, a scholar with a turban). Selected character persists across runs. Characters are rendered as simple 3D mesh figures with culturally appropriate clothing.",
-        "status": "implemented",
+        "id": "REQ-13",
+        "summary": "Redesign all UI screens (MainMenu.tsx, CharacterSelect.tsx, GameOver.tsx, Leaderboard.tsx, GameHUD.tsx) with a richer, more immersive visual treatment: use layered Islamic geometric SVG or CSS pattern backgrounds, add a subtle parallax or shimmer animation to panel borders, use the Cinzel Decorative font for all headings, apply glowing gold/terracotta button styles with hover effects, and ensure consistent use of the desert palette (sand gold, terracotta, deep teal, ivory) throughout. HUD elements should have semi-transparent frosted panels with geometric border accents.",
+        "status": "missing",
         "plannedFiles": [
-          "frontend/src/screens/CharacterSelect.tsx",
-          "frontend/src/game/characters/index.tsx",
-          "frontend/src/hooks/useCharacterSelection.ts",
-          "frontend/src/game/Player.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/screens/CharacterSelect.tsx"
-        ]
-      },
-      {
-        "id": "REQ-6",
-        "summary": "Implement a persistent high score leaderboard stored in the Motoko backend: save each completed run's score and coin count associated with a player nickname. Display the top 10 scores on a leaderboard screen accessible from the main menu. Provide a 'Submit Score' flow after game over.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/screens/Leaderboard.tsx",
-          "frontend/src/screens/GameOver.tsx",
-          "frontend/src/hooks/useLeaderboard.ts",
-          "frontend/src/hooks/useGameState.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/screens/Leaderboard.tsx",
-          "frontend/src/screens/GameOver.tsx",
-          "frontend/src/hooks/useGameState.ts"
-        ]
-      },
-      {
-        "id": "REQ-7",
-        "summary": "Design a cohesive visual theme: use a warm desert color palette (sand golds, terracotta, deep teal, ivory) with Arabic calligraphy-inspired typography for headings. Apply the Islamic geometric pattern motifs consistently across the main menu, HUD, character select, and leaderboard screens. All UI must feel immersive and culturally respectful.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
-          "frontend/src/components/IslamicPanel.tsx",
           "frontend/src/screens/MainMenu.tsx",
           "frontend/src/screens/CharacterSelect.tsx",
-          "frontend/src/screens/Leaderboard.tsx",
           "frontend/src/screens/GameOver.tsx",
-          "frontend/src/game/GameHUD.tsx"
+          "frontend/src/screens/Leaderboard.tsx",
+          "frontend/src/game/GameHUD.tsx",
+          "frontend/src/index.css"
         ],
-        "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
-          "frontend/src/screens/MainMenu.tsx",
-          "frontend/src/screens/CharacterSelect.tsx",
-          "frontend/src/screens/Leaderboard.tsx",
-          "frontend/src/screens/GameOver.tsx",
-          "frontend/src/game/GameHUD.tsx"
-        ]
+        "matchedFiles": []
       },
       {
-        "id": "REQ-8",
-        "summary": "Create a main menu screen with the game logo, a Play button, a Character Select button, and a Leaderboard button. Include a game-over screen showing the run's final score, coins collected, best score, and buttons to Retry or Return to Menu.",
-        "status": "implemented",
+        "id": "REQ-14",
+        "summary": "Generate and use updated visual assets: a high-quality main menu hero background image featuring an Islamic desert cityscape at dusk with minarets and domes silhouetted against a warm gradient sky, and a decorative Islamic geometric tile texture used as repeating panel backgrounds across UI screens.",
+        "status": "missing",
         "plannedFiles": [
           "frontend/src/screens/MainMenu.tsx",
-          "frontend/src/App.tsx",
-          "frontend/src/screens/GameOver.tsx"
+          "frontend/src/screens/CharacterSelect.tsx",
+          "frontend/src/screens/GameOver.tsx",
+          "frontend/src/screens/Leaderboard.tsx"
         ],
-        "matchedFiles": [
-          "frontend/src/screens/MainMenu.tsx",
-          "frontend/src/App.tsx",
-          "frontend/src/screens/GameOver.tsx"
-        ]
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Overhaul the 3D game environment in GameScene.tsx: replace basic geometry with richer, more detailed Islamic architecture — add multi-tiered minarets with ornate tops, domed mosque structures with ribbed surfaces, pointed arched doorways and windows with geometric latticework, and colourful geometric tile patterns on the ground/floor. Add layered desert skybox with a warm gradient (deep orange-amber at horizon fading to deep teal/indigo at zenith) and a large visible crescent moon and stars. Include bazaar market stall props (awnings, lanterns, rugs) as side scenery. All environment segments must tile seamlessly for infinite scroll.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/game/GameScene.tsx",
+          "frontend/src/game/GameScene.tsx"
+        ],
+        "matchedFiles": []
       }
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
+    "backend/blob-storage/Mixin.mo",
+    "backend/blob-storage/Storage.mo",
     "build-request.json",
-    "build-template/Dockerfile",
-    "build-template/LICENSE",
     "build-template/README.md",
-    "build-template/deploy.sh",
-    "build-template/icp.yaml",
-    "build-template/package.json",
-    "build-template/pnpm-lock.yaml",
-    "build-template/pnpm-workspace.yaml",
-    "build-template/scripts/prune-unused-images.js",
-    "build-template/scripts/resize-images.js",
-    "build-template/src/backend/canister.yaml",
-    "build-template/src/backend/system-idl/aaaaa-aa.did",
-    "build-template/src/frontend/canister.yaml",
-    "build-template/src/frontend/components.json",
-    "build-template/src/frontend/env.json",
-    "build-template/src/frontend/eslint-rules/no-bigint-in-query-keys.js",
-    "build-template/src/frontend/eslint-rules/require-internet-identity-provider.js",
-    "build-template/src/frontend/eslint.config.js",
-    "build-template/src/frontend/package.json",
-    "build-template/src/frontend/postcss.config.js",
-    "build-template/src/frontend/src/components/ui/accordion.tsx",
-    "build-template/src/frontend/src/components/ui/alert-dialog.tsx",
-    "build-template/src/frontend/src/components/ui/alert.tsx",
-    "build-template/src/frontend/src/components/ui/aspect-ratio.tsx",
-    "build-template/src/frontend/src/components/ui/avatar.tsx",
-    "build-template/src/frontend/src/components/ui/badge.tsx",
-    "build-template/src/frontend/src/components/ui/breadcrumb.tsx",
-    "build-template/src/frontend/src/components/ui/button.tsx",
-    "build-template/src/frontend/src/components/ui/calendar.tsx",
-    "build-template/src/frontend/src/components/ui/card.tsx",
-    "build-template/src/frontend/src/components/ui/carousel.tsx",
-    "build-template/src/frontend/src/components/ui/chart.tsx",
-    "build-template/src/frontend/src/components/ui/checkbox.tsx",
-    "build-template/src/frontend/src/components/ui/collapsible.tsx",
-    "build-template/src/frontend/src/components/ui/command.tsx",
-    "build-template/src/frontend/src/components/ui/context-menu.tsx",
-    "build-template/src/frontend/src/components/ui/dialog.tsx",
-    "build-template/src/frontend/src/components/ui/drawer.tsx",
-    "build-template/src/frontend/src/components/ui/dropdown-menu.tsx",
-    "build-template/src/frontend/src/components/ui/form.tsx",
-    "build-template/src/frontend/src/components/ui/hover-card.tsx",
-    "build-template/src/frontend/src/components/ui/input-otp.tsx",
-    "build-template/src/frontend/src/components/ui/input.tsx",
-    "build-template/src/frontend/src/components/ui/label.tsx",
-    "build-template/src/frontend/src/components/ui/menubar.tsx",
-    "build-template/src/frontend/src/components/ui/navigation-menu.tsx",
-    "build-template/src/frontend/src/components/ui/pagination.tsx",
-    "build-template/src/frontend/src/components/ui/popover.tsx",
-    "build-template/src/frontend/src/components/ui/progress.tsx",
-    "build-template/src/frontend/src/components/ui/radio-group.tsx",
-    "build-template/src/frontend/src/components/ui/resizable.tsx",
-    "build-template/src/frontend/src/components/ui/scroll-area.tsx",
-    "build-template/src/frontend/src/components/ui/select.tsx",
-    "build-template/src/frontend/src/components/ui/separator.tsx",
-    "build-template/src/frontend/src/components/ui/sheet.tsx",
-    "build-template/src/frontend/src/components/ui/sidebar.tsx",
-    "build-template/src/frontend/src/components/ui/skeleton.tsx",
-    "build-template/src/frontend/src/components/ui/slider.tsx",
-    "build-template/src/frontend/src/components/ui/sonner.tsx",
-    "build-template/src/frontend/src/components/ui/switch.tsx",
-    "build-template/src/frontend/src/components/ui/table.tsx",
-    "build-template/src/frontend/src/components/ui/tabs.tsx",
-    "build-template/src/frontend/src/components/ui/textarea.tsx",
-    "build-template/src/frontend/src/components/ui/toggle-group.tsx",
-    "build-template/src/frontend/src/components/ui/toggle.tsx",
-    "build-template/src/frontend/src/components/ui/tooltip.tsx",
-    "build-template/src/frontend/src/hooks/use-mobile.tsx",
-    "build-template/src/frontend/src/lib/utils.ts",
-    "build-template/src/frontend/tsconfig.json",
-    "build-template/src/frontend/vite.config.js",
-    "build-template/tsconfig.json",
     "caffeine.lock.json",
     "feature_evidence.json",
-    "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/index.css",
-    "frontend/index.html",
-    "frontend/public/assets/generated/bg-desert-city.dim_1920x600.png",
-    "frontend/public/assets/generated/bg-main-menu.dim_1920x1080.png",
-    "frontend/public/assets/generated/coin-dinar.dim_128x128.png",
-    "frontend/public/assets/generated/collectible-beads.dim_128x128.png",
-    "frontend/public/assets/generated/collectible-lantern.dim_128x128.png",
-    "frontend/public/assets/generated/logo-deen-runner.dim_512x256.png",
-    "frontend/public/assets/generated/pattern-islamic-tile.dim_512x512.png",
-    "frontend/public/assets/generated/powerup-buraq.dim_128x128.png",
-    "frontend/public/assets/generated/powerup-magnet.dim_128x128.png",
-    "frontend/public/assets/generated/powerup-shield.dim_128x128.png",
-    "frontend/src/App.tsx",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
-    "frontend/src/config.ts",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/game/GameHUD.tsx",
-    "frontend/src/game/GameScene.tsx",
-    "frontend/src/game/characters/index.ts",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useGameState.ts",
-    "frontend/src/hooks/useInternetIdentity.ts",
-    "frontend/src/hooks/useQueries.ts",
-    "frontend/src/index.css",
-    "frontend/src/main.tsx",
-    "frontend/src/screens/CharacterSelect.tsx",
-    "frontend/src/screens/GameOver.tsx",
-    "frontend/src/screens/Leaderboard.tsx",
-    "frontend/src/screens/MainMenu.tsx",
-    "frontend/src/ui-summary.json",
-    "frontend/src/utils/StorageClient.ts",
-    "frontend/tailwind.config.js",
+    "frontend/public/assets/generated/islamic-tile-pattern.dim_512x512.png",
+    "frontend/public/assets/generated/menu-hero-bg.dim_1920x1080.png",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

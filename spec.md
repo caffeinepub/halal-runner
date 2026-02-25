@@ -1,16 +1,14 @@
 # Specification
 
 ## Summary
-**Goal:** Build "Deen Runner," a 3D endless runner game (Subway Surfers style) with a halal Islamic theme, using React Three Fiber for all rendering and gameplay, with a Motoko backend for leaderboard persistence.
+**Goal:** Full visual overhaul of the Deen Runner 3D game — upgrading the environment, character models, obstacles/collectibles, lighting, and all UI screens to a richer, more immersive Islamic-themed aesthetic.
 
 **Planned changes:**
-- Implement 3D endless runner core loop: auto-forward movement on a three-lane track, lane switching (left/right arrows + swipe), jump (up arrow/swipe), slide (down arrow/swipe), collision detection triggering game over, and gradually increasing speed
-- Build procedurally generated Islamic-themed 3D environment: mosque architecture (minarets, domes, arched doorways), Arabic geometric tile patterns on floors/walls, crescent/star decorations, and desert/bazaar scenery tiling seamlessly
-- Add coin (gold dinars with crescent motif) and collectible (lanterns, prayer beads) mechanics with a HUD showing real-time coin count and distance score
-- Implement three Islamic-themed power-ups: Barakah Shield (temporary invincibility), Buraq Boost (speed burst with visual trail), and Coin Magnet (auto-collects nearby coins), each with a HUD timer bar
-- Create a character selection screen with at least three Muslim-themed 3D characters (boy in kufi, girl in hijab, scholar with turban); selection persists for the session
-- Design main menu screen (logo, Play, Character Select, Leaderboard buttons) and game-over screen (final score, coins, personal best, Retry/Return to Menu)
-- Apply cohesive warm desert color palette (sand gold, terracotta, deep teal, ivory) with Arabic calligraphy-inspired typography and Islamic geometric pattern motifs across all UI screens
-- Implement Motoko backend for persistent top-10 leaderboard: store nickname, score, and coin count per run; post-game "Submit Score" flow; leaderboard screen accessible from main menu
+- Overhaul the 3D game environment in GameScene.tsx with detailed Islamic architecture (multi-tiered minarets, domed mosques, pointed arched doorways, geometric latticework), colourful geometric tile floor patterns, a layered desert skybox (warm amber-to-teal gradient with crescent moon and stars), and bazaar market stall side scenery; all segments tile seamlessly for infinite scroll
+- Upgrade the three player character 3D models (Ahmad with kufi, Fatima with hijab, Sheikh Omar with turban) with distinguishable stylised facial features, properly shaped culturally appropriate headwear, coloured clothing with fabric fold materials, and idle/run bobbing animation
+- Enhance obstacle visuals with culturally themed shapes (stone archway barriers, Arabic-script crates, ornate pots); make coins glow gold with a spinning shimmer; give special collectibles (prayer beads, lanterns, Quran scrolls) distinct glowing auras; add golden particle burst on collection
+- Improve scene lighting with a warm amber directional sun light, secondary deep-teal ambient fill, point lights near lanterns and collectibles, and shadow casting/receiving on the ground plane and key props
+- Redesign all UI screens (MainMenu, CharacterSelect, GameOver, Leaderboard, GameHUD) with Islamic geometric SVG/CSS pattern backgrounds, Cinzel Decorative font headings, glowing gold/terracotta buttons with hover effects, frosted semi-transparent panels with geometric border accents, and consistent desert palette (sand gold, terracotta, deep teal, ivory)
+- Use the new hero background image on the main menu and the geometric tile texture as a repeating panel background across UI screens
 
-**User-visible outcome:** Players can select a Muslim-themed character, run an infinite 3D Islamic-themed track, collect coins and power-ups, avoid obstacles, and submit their score to a persistent leaderboard viewable from the main menu.
+**User-visible outcome:** Players see a fully overhauled game with richly detailed Islamic architecture, expressive character models, glowing collectibles with particle effects, atmospheric desert lighting, and a polished immersive UI across all screens.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
+  "projectStateVersion": 5,
   "summary": "An endless runner game inspired by Subway Surfers with a halal Muslim theme. The player character runs through Islamic-themed environments, collecting coins/items, dodging obstacles, with Islamic art, architecture, and cultural elements throughout.",
   "architectural_notes": [
     "2D side-scrolling endless runner (Subway Surfers style with lane-switching mechanic)",
@@ -8,7 +8,7 @@
   ],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Game logo with crescent moon, star, and stylized Arabic-inspired lettering on a deep teal background (logo-deen-runner.dim_512x256.png)\n- Islamic geometric tile pattern in gold and terracotta on ivory background, seamless (pattern-islamic-tile.dim_512x512.png)\n- Desert cityscape silhouette with mosque domes and minarets against a warm sunset sky (bg-desert-city.dim_1920x600.png)\n- Gold dinar coin with crescent moon motif on both sides (coin-dinar.dim_128x128.png)\n- Glowing lantern collectible icon in warm amber tones (collectible-lantern.dim_128x128.png)\n- Prayer beads collectible icon in green and gold (collectible-beads.dim_128x128.png)\n- Barakah Shield power-up icon — golden hexagonal shield with star pattern (powerup-shield.dim_128x128.png)\n- Buraq Boost power-up icon — stylized winged horse silhouette in electric teal (powerup-buraq.dim_128x128.png)\n- Coin magnet power-up icon — crescent-shaped magnet with gold sparkles (powerup-magnet.dim_128x128.png)\n- Main menu background — aerial view of an Islamic marketplace with archways and tile rooftops (bg-main-menu.dim_1920x1080.png)",
+  "imageRequirements": "## Required Images\n- Islamic desert cityscape at dusk: minarets and mosque domes silhouetted against a warm amber-to-deep-teal gradient sky with a crescent moon and stars, lush golden lighting on architecture (menu-hero-bg.dim_1920x1080.png)\n- Seamlessly tileable Islamic geometric star-and-polygon pattern in warm sand gold, terracotta, and ivory on a deep teal background (islamic-tile-pattern.dim_512x512.png)",
   "existing_features": [
     {
       "id": "feature-implement-a-3d-endless-runner-core-gameplay-loop-using-react-three-fiber-the-player-character-automatically-runs-forward-along-a-three-lane-track-can-swipe-press-left-or-right-to-change-lanes-jump-up-arrow-swipe-up-to-clear-obstacles-and-slide-down-arrow-swipe-down-to-go-under-obstacles-the-game-ends-when-the-player-collides-with-an-obstacle",
@@ -109,6 +109,60 @@
       "summary": "Build procedurally generated 3D Islamic-themed environments that scroll toward the player: include mosque architecture (minarets, domes, arched doorways), geometric tile patterns on floors and walls, crescent moon and star decorations, and desert/market bazaar scenery. Environments should tile seamlessly for an infinite feel.",
       "reqIds": [
         "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Full visual overhaul: richer 3D environment (mosque architecture, floors, sky, lighting), improved player character models, obstacles, coins, and all UI screens to be more attractive and immersive",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Overhaul the 3D game environment in GameScene.tsx: replace basic geometry with richer, more detailed Islamic architecture — add multi-tiered minarets with ornate tops, domed mosque structures with ribbed surfaces, pointed arched doorways and windows with geometric latticework, and colourful geometric tile patterns on the ground/floor. Add layered desert skybox with a warm gradient (deep orange-amber at horizon fading to deep teal/indigo at zenith) and a large visible crescent moon and stars. Include bazaar market stall props (awnings, lanterns, rugs) as side scenery. All environment segments must tile seamlessly for infinite scroll.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Upgrade player character 3D models in GameScene.tsx and the character definitions: give each character (Ahmad with kufi, Fatima with hijab, Sheikh Omar with turban) more detailed mesh geometry — distinguishable facial features (stylised rounded head), properly shaped culturally appropriate headwear (kufi, hijab draped over shoulders, full turban wrap), coloured clothing (thobe/abaya/robe) with visible fabric folds using emissive or matcap materials, and idle/run animation via position-based bobbing. Characters should feel expressive and culturally respectful.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Enhance obstacle and collectible 3D visuals in GameScene.tsx: obstacles should look like culturally themed objects (stone archway barriers, crates with Arabic script textures, ornate pots) with richer materials. Coins should glow gold with a subtle spinning shimmer effect. Special collectibles (prayer beads, lanterns, Quran scrolls) should have distinct glowing auras matching their type. Add a particle burst effect (golden sparkles) when the player collects a coin or collectible.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Improve scene lighting in GameScene.tsx: add a warm directional sunlight (amber/orange tint) casting soft shadows on environment elements, a secondary ambient fill light in deep teal to simulate skylight, and point lights near lanterns and collectibles for localised warm glow. Enable shadow casting and receiving on the ground plane and key architectural props.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Redesign all UI screens (MainMenu.tsx, CharacterSelect.tsx, GameOver.tsx, Leaderboard.tsx, GameHUD.tsx) with a richer, more immersive visual treatment: use layered Islamic geometric SVG or CSS pattern backgrounds, add a subtle parallax or shimmer animation to panel borders, use the Cinzel Decorative font for all headings, apply glowing gold/terracotta button styles with hover effects, and ensure consistent use of the desert palette (sand gold, terracotta, deep teal, ivory) throughout. HUD elements should have semi-transparent frosted panels with geometric border accents.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Generate and use updated visual assets: a high-quality main menu hero background image featuring an Islamic desert cityscape at dusk with minarets and domes silhouetted against a warm gradient sky, and a decorative Islamic geometric tile texture used as repeating panel backgrounds across UI screens.",
+      "reqIds": [
+        "REQ-14"
       ],
       "status": "pending"
     }

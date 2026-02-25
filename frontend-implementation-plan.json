@@ -1,290 +1,168 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Halal Muslim Themed Endless Runner Game (Deen Runner)",
+  "title": "Full Visual Overhaul: Environment, Characters, and UI",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Implement 3D endless runner core gameplay loop with React Three Fiber",
+      "id": "REQ-9",
+      "summary": "Overhaul 3D game environment with Islamic architecture, desert skybox with crescent moon, bazaar props, and seamless tiling",
       "acceptanceCriteria": [
-        "Player character runs forward automatically at increasing speed over time",
-        "Left/right lane switching works via keyboard arrow keys and touch swipe",
-        "Jump and slide animations play correctly on input",
-        "Collision with obstacle triggers a game-over state",
-        "Game speed gradually increases the longer the player survives"
+        "Minarets, domes, and arched structures are visible along the track as the player runs",
+        "Floor tiles display Islamic geometric patterns with warm sand/terracotta/teal colours",
+        "Sky renders as a warm desert gradient with a visible crescent moon and stars",
+        "Bazaar props (lanterns, market stalls) appear as side scenery",
+        "Environment tiles loop seamlessly with no visible seams or gaps"
       ],
       "file_operations": [
         {
           "path": "frontend/src/game/GameScene.tsx",
-          "operation": "create",
-          "description": "Create the main 3D game scene component using React Three Fiber Canvas. Set up camera, lighting, and coordinate the player, track, obstacles, and collectibles. Handle game state (running, game-over) and speed progression. This is a 3D game."
+          "operation": "modify",
+          "description": "Replace basic ground plane geometry with Islamic geometric patterned floor tiles using planeGeometry with detailed texture mapping (warm sand/terracotta/teal colors). Add multi-tiered minaret meshes with ornate cylindrical tops and pointed caps, domed mosque structures with ribbed sphereGeometry surfaces, and pointed arched doorways using combined box and cylinder geometries with geometric lattice details. Position these architectural elements along the track segments to appear as the player runs. Create bazaar market stall props (awnings using plane meshes, hanging lanterns using sphere + cylinder, decorative rugs using textured planes) and place them as side scenery. Implement seamless environment segment tiling by ensuring all architectural props reset and reposition smoothly as segments recycle in the infinite scroll system."
         },
         {
-          "path": "frontend/src/game/Player.tsx",
-          "operation": "create",
-          "description": "Create the player character component as a 3D mesh. Implement automatic forward movement, three-lane positioning, lane-switching animation, jump physics, and slide animation. Handle keyboard (arrow keys) and touch swipe input detection. Expose collision detection interface."
-        },
-        {
-          "path": "frontend/src/game/Track.tsx",
-          "operation": "create",
-          "description": "Create the infinite scrolling track component. Generate and recycle track segments as the player moves forward. Position obstacles and collectibles procedurally across three lanes."
-        },
-        {
-          "path": "frontend/src/game/Obstacle.tsx",
-          "operation": "create",
-          "description": "Create obstacle component as 3D meshes (barriers, boxes, low overhangs). Implement collision detection with the player. Support both jump-over and slide-under obstacle types."
-        },
-        {
-          "path": "frontend/src/hooks/useGameState.ts",
-          "operation": "create",
-          "description": "Create a custom hook to manage game state: running status, current score, coin count, speed multiplier, game-over flag, and reset logic. Export state and actions for game components to consume."
-        },
-        {
-          "path": "frontend/src/hooks/useInputControls.ts",
-          "operation": "create",
-          "description": "Create a custom hook to handle keyboard arrow key events and touch swipe gestures. Return directional commands (left, right, up, down) for the player component to consume."
+          "path": "frontend/src/game/GameScene.tsx",
+          "operation": "modify",
+          "description": "Replace basic skybox color with a layered desert gradient skybox: create a large sphereGeometry sky dome with a custom shader material or gradient texture mapping deep orange-amber at the horizon transitioning to deep teal-indigo at the zenith. Add a large visible crescent moon mesh (torusGeometry with one side removed or custom shape) positioned in the upper sky quadrant with an emissive gold material. Add multiple small star meshes (sphereGeometry with emissive white material) scattered across the sky dome to create a night desert sky atmosphere."
         }
       ]
     },
     {
-      "id": "REQ-2",
-      "summary": "Build procedurally generated 3D Islamic-themed environments",
+      "id": "REQ-10",
+      "summary": "Upgrade player character 3D models with detailed geometry, culturally appropriate headwear, colored clothing with folds, and idle/run animation",
       "acceptanceCriteria": [
-        "Track environment visually evokes Islamic architecture and art",
-        "Environment tiles loop seamlessly without visible seams",
-        "Geometric Arabic patterns appear on floor/wall surfaces",
-        "Minaret and dome silhouettes appear in the background"
+        "Each character has a distinct, recognisable silhouette with appropriate headwear shape",
+        "Clothing colours match each character's defined colour metadata",
+        "Characters visibly bob/animate while running",
+        "Character models look polished and culturally appropriate in the character select screen preview and in-game"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/game/Environment.tsx",
-          "operation": "create",
-          "description": "Create the 3D environment component rendering Islamic-themed scenery: mosque domes, minarets, arched doorways, and geometric tile patterns. Use textures referencing generated images from frontend/public/assets/generated/pattern-islamic-tile.dim_512x512.png and frontend/public/assets/generated/bg-desert-city.dim_1920x600.png. Implement seamless tiling and procedural placement of architectural elements."
-        },
-        {
-          "path": "frontend/src/game/Track.tsx",
+          "path": "frontend/src/game/GameScene.tsx",
           "operation": "modify",
-          "description": "Integrate Environment component into track segments. Apply Islamic geometric patterns as textures to track floor and walls. Ensure environment elements scroll and recycle seamlessly."
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Add coin and collectible mechanics with HUD display",
-      "acceptanceCriteria": [
-        "Coins and collectibles appear along all three lanes during a run",
-        "Touching/running through a coin increments the coin counter",
-        "Score increases continuously based on distance run and items collected",
-        "HUD displays current coin count and distance score in real time"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/game/Collectible.tsx",
-          "operation": "create",
-          "description": "Create collectible component for coins (using generated image frontend/public/assets/generated/coin-dinar.dim_128x128.png as texture), lanterns (frontend/public/assets/generated/collectible-lantern.dim_128x128.png), and prayer beads (frontend/public/assets/generated/collectible-beads.dim_128x128.png). Render as 3D meshes with textures. Implement collision detection and trigger collection events."
+          "description": "Enhance the player character mesh construction in the PlayerCharacter component to include more detailed geometry: add a stylised rounded head using sphereGeometry with distinguishable facial features (nose bump, eye indents using smaller spheres), properly shaped culturally appropriate headwear based on character type (kufi as rounded cap using sphereGeometry, hijab as draped cloth using planeGeometry wrapping over shoulders, full turban as wrapped cylindrical layers using multiple torusGeometry rings), and colored clothing (thobe/abaya/robe using cylindrical body mesh with boxGeometry sleeves) with visible fabric folds created via displaced vertices or layered geometry. Apply emissive or MeshStandardMaterial with the character's defined color metadata. Implement idle/run animation by adding a continuous vertical position bobbing effect (sine wave oscillation) and subtle rotation/tilt to simulate movement while running."
         },
         {
-          "path": "frontend/src/game/Track.tsx",
+          "path": "frontend/src/game/characters/index.ts",
           "operation": "modify",
-          "description": "Spawn collectibles along the three lanes at regular intervals. Pass collectible types and positions to Collectible component instances."
+          "description": "Ensure each CharacterDef includes detailed color metadata used by the enhanced character meshes, confirming Ahmad's kufi-wearing model uses his defined colors, Fatima's hijab-wearing model uses her colors, and Sheikh Omar's turban-wearing model uses his colors. No structural changes to the character definitions are needed, but verify color values are accurately specified for the enhanced rendering."
         },
-        {
-          "path": "frontend/src/game/GameHUD.tsx",
-          "operation": "create",
-          "description": "Create the in-game heads-up display component. Show current coin count, distance score, and active power-up timers. Position HUD elements at the top of the screen using absolute positioning over the Canvas."
-        },
-        {
-          "path": "frontend/src/hooks/useGameState.ts",
-          "operation": "modify",
-          "description": "Add coin collection and score increment logic. Update score based on distance traveled and items collected."
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Implement Islamic-themed power-ups with visual timers",
-      "acceptanceCriteria": [
-        "Three distinct power-up types spawn randomly during a run",
-        "Each power-up has a unique 3D icon with Islamic styling",
-        "Active power-up duration is shown in the HUD with a depleting bar",
-        "Shield makes player invincible to one obstacle collision",
-        "Buraq Boost temporarily increases speed and shows a visual trail"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/game/PowerUp.tsx",
-          "operation": "create",
-          "description": "Create power-up component rendering Barakah Shield (frontend/public/assets/generated/powerup-shield.dim_128x128.png), Buraq Boost (frontend/public/assets/generated/powerup-buraq.dim_128x128.png), and Coin Magnet (frontend/public/assets/generated/powerup-magnet.dim_128x128.png) as 3D meshes with textures. Handle collision detection and trigger power-up activation."
-        },
-        {
-          "path": "frontend/src/game/Track.tsx",
-          "operation": "modify",
-          "description": "Spawn power-ups randomly along the track at intervals. Pass power-up types to PowerUp component instances."
-        },
-        {
-          "path": "frontend/src/hooks/useGameState.ts",
-          "operation": "modify",
-          "description": "Add power-up state management: track active power-up type, remaining duration, and effects. Implement Shield invincibility, Buraq speed boost, and Magnet auto-collection logic."
-        },
-        {
-          "path": "frontend/src/game/GameHUD.tsx",
-          "operation": "modify",
-          "description": "Add power-up timer display showing active power-up icon and a depleting progress bar indicating remaining duration."
-        },
-        {
-          "path": "frontend/src/game/Player.tsx",
-          "operation": "modify",
-          "description": "Apply Buraq Boost speed increase and visual trail effect when active. Handle Shield invincibility preventing game-over on collision."
-        },
-        {
-          "path": "frontend/src/game/Collectible.tsx",
-          "operation": "modify",
-          "description": "Implement Magnet power-up behavior: auto-collect coins within a radius when magnet is active."
-        }
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "summary": "Create character selection screen with Muslim-themed runner characters",
-      "acceptanceCriteria": [
-        "Character selection screen shows at least three character options",
-        "Each character has a visually distinct appearance with Islamic attire",
-        "Selected character is highlighted and saved for the current session",
-        "The chosen character model appears correctly in the game run"
-      ],
-      "file_operations": [
         {
           "path": "frontend/src/screens/CharacterSelect.tsx",
-          "operation": "create",
-          "description": "Create character selection screen displaying at least three character options (boy in kufi cap, girl in hijab, scholar with turban). Render character previews as 3D meshes. Highlight the selected character. Save selection to state. Include a Start Game button."
-        },
-        {
-          "path": "frontend/src/game/characters/index.tsx",
-          "operation": "create",
-          "description": "Define character models as simple 3D mesh geometries with culturally appropriate clothing and colors. Export character definitions (mesh geometry, materials, names) for use in character select and gameplay."
-        },
-        {
-          "path": "frontend/src/hooks/useCharacterSelection.ts",
-          "operation": "create",
-          "description": "Create a custom hook to manage selected character state. Persist selection in session storage. Provide getter and setter for selected character ID."
-        },
-        {
-          "path": "frontend/src/game/Player.tsx",
           "operation": "modify",
-          "description": "Load the selected character model from useCharacterSelection hook. Render the appropriate character mesh in place of a default placeholder."
+          "description": "Update the character preview rendering logic to display the enhanced character models with detailed headwear and clothing geometry, ensuring the preview matches the in-game appearance. The character models should render with the same mesh enhancements applied in GameScene.tsx so players see the polished, culturally appropriate character designs before selection."
         }
       ]
     },
     {
-      "id": "REQ-6",
-      "summary": "Implement persistent high score leaderboard with backend storage",
+      "id": "REQ-11",
+      "summary": "Enhance obstacle and collectible 3D visuals with culturally themed objects, glowing materials, and particle burst effects on collection",
       "acceptanceCriteria": [
-        "Backend stores run records with nickname, score, and coin count",
-        "Leaderboard screen fetches and displays the top 10 all-time scores",
-        "After game over, player can enter a nickname and submit their score",
-        "Scores are ranked in descending order",
-        "Leaderboard updates immediately after a new score is submitted"
+        "Obstacles have culturally themed shapes with textured or coloured materials",
+        "Coins display a gold emissive glow and spin continuously",
+        "Special collectibles have a distinct coloured aura distinguishing them from regular coins",
+        "A particle sparkle burst plays at the point of collection when the player picks up a coin or collectible"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/screens/Leaderboard.tsx",
-          "operation": "create",
-          "description": "Create leaderboard screen that fetches top 10 scores from backend using getLeaderboard method. Display scores in descending order with nickname, score, and coin count. Include a Back to Menu button."
+          "path": "frontend/src/game/GameScene.tsx",
+          "operation": "modify",
+          "description": "Replace basic obstacle geometry with culturally themed objects: stone archway barriers using combined box and cylinder geometries arranged in pointed arch shapes, crates with Arabic script textures (use planeGeometry with texture or text decals), ornate pots using cylinder and sphere geometries with decorative ridges. Apply richer materials (MeshStandardMaterial with color, roughness, metalness) to obstacles. For coins, add an emissive gold material (MeshStandardMaterial with emissive: gold) and implement continuous spinning animation via rotation update in the animation loop. For special collectibles (prayer beads, lanterns, Quran scrolls), add distinct glowing auras by wrapping each collectible mesh with a slightly larger semi-transparent sphere using emissive material in a type-specific color (e.g., teal for beads, amber for lanterns, ivory for scrolls)."
+        },
+        {
+          "path": "frontend/src/game/GameScene.tsx",
+          "operation": "modify",
+          "description": "Implement particle burst effect on coin/collectible collection: create a particle system using InstancedMesh or Points geometry with multiple small sphere particles. When the collision detection triggers a coin or collectible pickup, spawn a burst of golden sparkle particles at the collection point, animate them outward in a radial explosion pattern with upward drift and fade-out over 0.5-1 second, then remove the particles. Integrate this particle spawn into the existing handleCollision or collectible collection logic."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Improve scene lighting with warm directional sunlight, ambient teal fill, point lights near lanterns/collectibles, and shadow casting",
+      "acceptanceCriteria": [
+        "Directional warm sun light is visible casting directional shading on objects",
+        "Ambient teal fill light softens shadow areas",
+        "Collectibles and lanterns emit localised warm point light",
+        "Ground plane receives shadows from player and nearby objects"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/game/GameScene.tsx",
+          "operation": "modify",
+          "description": "Add a directionalLight with amber/orange color (e.g., color='#FF9955') positioned above and angled down to simulate warm desert sunlight, with castShadow enabled. Add an ambientLight with deep teal color (e.g., color='#226677') at moderate intensity to provide soft fill lighting in shadow areas. Add pointLight instances near lantern props and collectible positions with warm amber/gold color for localised glow effects. Enable shadow receiving on the ground plane mesh (receiveShadow property) and shadow casting on the player character and key architectural props (castShadow property). Ensure the React Three Fiber Canvas has shadows enabled."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Redesign all UI screens with Islamic geometric backgrounds, Cinzel Decorative headings, glowing gold/terracotta buttons, frosted panels, and consistent desert palette",
+      "acceptanceCriteria": [
+        "All screen headings use Cinzel Decorative font",
+        "Buttons have gold/terracotta gradient fills with visible hover glow effect",
+        "UI panels use semi-transparent frosted dark backgrounds with geometric border decorations",
+        "Islamic geometric pattern motifs appear consistently on all screens as backgrounds or accents",
+        "HUD in-game score and coin counter panels have frosted panel styling with geometric accents"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/screens/MainMenu.tsx",
+          "operation": "modify",
+          "description": "Wrap the main menu content in a layered container with an Islamic geometric pattern background (use the generated islamic-tile-pattern.dim_512x512.png tile from frontend/public/assets/generated as a repeating CSS background-image). Apply Cinzel Decorative font to all heading elements. Replace existing button styles with glowing gold/terracotta gradient buttons: add CSS classes with linear-gradient backgrounds (gold to terracotta), add hover effects with box-shadow glow (gold rgba), and add subtle shimmer animation to button borders. Wrap menu panels in semi-transparent frosted containers (backdrop-filter: blur, background: rgba dark with low opacity) with geometric border accents (use SVG or CSS border-image with star/polygon patterns). Ensure consistent use of the desert palette colors (sand-gold, terracotta, deep-teal, ivory) defined in the Tailwind config throughout the screen."
+        },
+        {
+          "path": "frontend/src/screens/CharacterSelect.tsx",
+          "operation": "modify",
+          "description": "Apply the same visual treatment as MainMenu: add the islamic-tile-pattern.dim_512x512.png background tile from frontend/public/assets/generated, use Cinzel Decorative for the screen heading, style character selection cards with semi-transparent frosted panels with geometric border decorations, and apply glowing gold/terracotta gradient button styles to the Start Game button. Ensure character cards use the desert palette and have hover glow effects."
         },
         {
           "path": "frontend/src/screens/GameOver.tsx",
-          "operation": "create",
-          "description": "Create game-over screen showing final score, coins collected, and personal best. Include a nickname input form and Submit Score button that calls backend submitScore method. Provide Retry and Return to Menu buttons."
-        },
-        {
-          "path": "frontend/src/hooks/useLeaderboard.ts",
-          "operation": "create",
-          "description": "Create a custom hook to interact with backend leaderboard methods. Provide functions to fetch top scores (getLeaderboard) and submit new scores (submitScore). Handle loading and error states."
-        },
-        {
-          "path": "frontend/src/hooks/useGameState.ts",
           "operation": "modify",
-          "description": "Track personal best score in local storage. Compare final score to personal best on game-over and update if higher."
-        }
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "summary": "Design cohesive Islamic-themed visual style across all UI",
-      "acceptanceCriteria": [
-        "Color palette is consistently warm desert tones across all screens",
-        "Headings use a decorative Arabic-inspired or calligraphy-style font",
-        "Islamic geometric patterns appear as borders or backgrounds in UI panels",
-        "No culturally disrespectful or haram imagery appears anywhere in the game"
-      ],
-      "file_operations": [
+          "description": "Apply consistent UI redesign: add the islamic-tile-pattern.dim_512x512.png background tile from frontend/public/assets/generated, use Cinzel Decorative for the Game Over heading, style the score summary panel and nickname input container with frosted semi-transparent backgrounds and geometric border accents, and update all buttons (Retry, Main Menu, Submit Score) with the glowing gold/terracotta gradient style with hover effects. Ensure the screen uses the desert palette consistently."
+        },
+        {
+          "path": "frontend/src/screens/Leaderboard.tsx",
+          "operation": "modify",
+          "description": "Apply consistent UI redesign: add the islamic-tile-pattern.dim_512x512.png background tile from frontend/public/assets/generated, use Cinzel Decorative for the Leaderboard heading, style the leaderboard table container with a frosted semi-transparent panel with geometric border decorations, style leaderboard entries with subtle geometric divider lines, and update the Back button with the glowing gold/terracotta gradient style with hover effect. Ensure the screen uses the desert palette consistently."
+        },
+        {
+          "path": "frontend/src/game/GameHUD.tsx",
+          "operation": "modify",
+          "description": "Redesign HUD elements with frosted panel styling: wrap the score display, coin counter, power-up indicator, shield indicator, and speed meter in semi-transparent frosted dark panels (backdrop-filter: blur, background: rgba with low opacity) with geometric border accents (small star/polygon SVG borders or CSS pseudo-elements). Use Cinzel Decorative font for HUD labels. Apply gold/terracotta color scheme to numeric values and meter fills. Ensure HUD panels have consistent geometric decorative borders that match the UI screen styling."
+        },
         {
           "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Define global CSS custom properties for the warm desert color palette (sand golds, terracotta, deep teal, ivory). Import and configure an Arabic-inspired or calligraphy-style Google Font for headings. Apply base typography styles."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Extend Tailwind theme with custom desert color palette (sand-gold, terracotta, deep-teal, ivory). Configure font families to include the Arabic-inspired font for headings."
-        },
-        {
-          "path": "frontend/src/components/IslamicPanel.tsx",
-          "operation": "create",
-          "description": "Create a reusable Islamic-themed panel component with geometric pattern borders using the generated image frontend/public/assets/generated/pattern-islamic-tile.dim_512x512.png as a background or border texture. Apply desert color palette and Arabic-style typography."
-        },
-        {
-          "path": "frontend/src/screens/MainMenu.tsx",
-          "operation": "modify",
-          "description": "Apply IslamicPanel component and desert color palette. Use the generated background image frontend/public/assets/generated/bg-main-menu.dim_1920x1080.png. Style headings with Arabic-inspired font."
-        },
-        {
-          "path": "frontend/src/screens/CharacterSelect.tsx",
-          "operation": "modify",
-          "description": "Apply IslamicPanel component, desert color palette, and Arabic-inspired typography. Ensure geometric pattern borders appear on UI elements."
-        },
-        {
-          "path": "frontend/src/screens/Leaderboard.tsx",
-          "operation": "modify",
-          "description": "Apply IslamicPanel component, desert color palette, and Arabic-inspired typography for consistency."
-        },
-        {
-          "path": "frontend/src/screens/GameOver.tsx",
-          "operation": "modify",
-          "description": "Apply IslamicPanel component, desert color palette, and Arabic-inspired typography."
-        },
-        {
-          "path": "frontend/src/game/GameHUD.tsx",
-          "operation": "modify",
-          "description": "Style HUD elements with desert color palette and Arabic-inspired font for score and coin display."
+          "description": "Add utility classes for the new UI styling: define .btn-gradient-gold for glowing gold/terracotta gradient buttons with hover glow box-shadow, define .panel-frosted for semi-transparent frosted backgrounds with backdrop-filter blur, define .border-geometric for geometric pattern border decorations (using CSS border-image or pseudo-elements with SVG patterns), and define .heading-decorative to ensure Cinzel Decorative font is applied to all headings. Add shimmer animation keyframes for subtle button border animations. Ensure all new utility classes use the desert palette CSS variables (sand-gold, terracotta, deep-teal, ivory)."
         }
       ]
     },
     {
-      "id": "REQ-8",
-      "summary": "Create main menu and game-over screens with navigation",
+      "id": "REQ-14",
+      "summary": "Generate and use updated visual assets: hero cityscape background and geometric tile texture",
       "acceptanceCriteria": [
-        "Main menu displays game title/logo and all three navigation buttons",
-        "Game-over screen shows final score, coins, and personal best",
-        "Retry immediately starts a new run",
-        "Return to Menu navigates back to the main menu",
-        "Transitions between screens are smooth"
+        "Main menu renders the hero cityscape background image behind the menu panel",
+        "UI screens display the geometric tile texture as a subtle background pattern",
+        "Images load from frontend/public/assets/generated"
       ],
       "file_operations": [
         {
           "path": "frontend/src/screens/MainMenu.tsx",
-          "operation": "create",
-          "description": "Create main menu screen displaying the game logo using the generated image frontend/public/assets/generated/logo-deen-runner.dim_512x256.png. Include Play, Character Select, and Leaderboard buttons. Apply the generated background image frontend/public/assets/generated/bg-main-menu.dim_1920x1080.png."
+          "operation": "modify",
+          "description": "Wire the generated hero cityscape background image menu-hero-bg.dim_1920x1080.png from frontend/public/assets/generated/menu-hero-bg.dim_1920x1080.png into the MainMenu screen as a full-screen background layer behind the menu panel. Use CSS background-image with background-size: cover and background-position: center to ensure the Islamic desert cityscape at dusk with minarets, domes, crescent moon, and stars fills the screen. Layer the menu content (buttons, panels) on top with appropriate z-index."
         },
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/screens/CharacterSelect.tsx",
           "operation": "modify",
-          "description": "Set up routing or view state management to switch between MainMenu, CharacterSelect, Leaderboard, GameScene, and GameOver screens. Handle navigation actions from buttons. Ensure smooth transitions between screens."
+          "description": "Wire the generated geometric tile texture islamic-tile-pattern.dim_512x512.png from frontend/public/assets/generated/islamic-tile-pattern.dim_512x512.png as a repeating background pattern (CSS background-image with background-repeat: repeat) behind the character selection content. Ensure the pattern is subtle and does not overpower the character cards."
         },
         {
           "path": "frontend/src/screens/GameOver.tsx",
           "operation": "modify",
-          "description": "Ensure Retry button resets game state and navigates to GameScene. Return to Menu button navigates back to MainMenu."
+          "description": "Wire the generated geometric tile texture islamic-tile-pattern.dim_512x512.png from frontend/public/assets/generated/islamic-tile-pattern.dim_512x512.png as a repeating background pattern behind the game over content, consistent with other UI screens."
+        },
+        {
+          "path": "frontend/src/screens/Leaderboard.tsx",
+          "operation": "modify",
+          "description": "Wire the generated geometric tile texture islamic-tile-pattern.dim_512x512.png from frontend/public/assets/generated/islamic-tile-pattern.dim_512x512.png as a repeating background pattern behind the leaderboard content, consistent with other UI screens."
         }
       ]
     }
